@@ -1,0 +1,23 @@
+/* Tailwind v4 入口：用 @import "tailwindcss" */
+@import "tailwindcss";
+
+:root {
+  --brand: 234 118 26; /* #EA761A 橙色 */
+  --ink: 17 24 39;     /* gray-900 */
+  --bg: 255 247 237;   /* 类 orange-50 背景 */
+}
+
+html, body { height: 100%; }
+body {
+  color: rgb(var(--ink));
+  background-color: rgb(var(--bg));
+}
+
+/* ---- 实用工具类（依然可以用 @apply）---- */
+@layer utilities {
+  .container-6xl { @apply mx-auto max-w-6xl px-4; }
+  .card { @apply rounded-2xl bg-white ring-1 ring-black/5 shadow-sm; }
+  .card-hover { @apply hover:shadow-md transition; }
+  .muted { @apply text-gray-500; }
+  .btn-primary { @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white bg-[rgb(var(--brand))] hover:opacity-90; }
+}
