@@ -10,7 +10,7 @@ import { resources } from "@/data/resources";
 
 export default function HomePage() {
   return (
-    <>
+    <main className="bg-cairorange text-black">
       {/* ======= 顶部 Hero：搜索 + 标题 + 右侧横幅图 ======= */}
       <section className="w-full">
         <div className="container-6xl py-8">
@@ -41,17 +41,28 @@ export default function HomePage() {
                 Research
               </h1>
 
+              {/* ======= Research Themes ======= */}
               <h2 className="mt-6 text-lg font-semibold">Research Themes</h2>
-              <div className="mt-3 h-28 rounded-2xl bg-white ring-1 ring-black/10" />
+              <div className="mt-3 rounded-2xl bg-white ring-1 ring-black/10 p-6 text-gray-800 leading-relaxed">
+                <p>
+                  Our research spans multiple facets of Artificial Intelligence,
+                  focusing on human-centred, transparent, and impactful AI systems.
+                  We advance knowledge in Robotics, Computer Vision, Natural Language
+                  Processing, and Trustworthy AI, bridging theory and practice to
+                  create technologies that enhance healthcare, communication, and
+                  human wellbeing.
+                </p>
+              </div>
             </div>
 
             {/* 右列：横幅图占位 */}
             <div className="h-72 md:h-[340px] rounded-2xl overflow-hidden ring-1 ring-black/10">
-              {/* 你有 banner 图的话，把下面 div 换成 <img src="/banner.jpg" className="w-full h-full object-cover" /> */}
-              <div className="w-full h-full bg-[url('/window.svg')] bg-cover bg-center bg-no-repeat bg-gray-200" />
+              {/* 有 banner 图的话，把下面 div 换成 <img src="/banner.jpg" className="w-full h-full object-cover" /> */}
+              <div className="w-full h-full bg-[url('/hero-banner.png')] bg-cover bg-center bg-no-repeat bg-gray-200" />
             </div>
           </div>
-        </div>
+        
+    </div>
       </section>
 
       {/* ======= Projects ======= */}
@@ -59,13 +70,19 @@ export default function HomePage() {
         title="Projects"
         actions={
           <Link href="/projects" className="inline-flex items-center gap-2 text-sm">
-            View More → 
+            View More →
           </Link>
         }
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {projects.slice(0, 3).map((p) => (
-            <Card key={p.slug} title={p.title} subtitle={p.theme} href={`/projects/${p.slug}`} />
+            <Card
+              key={p.slug}
+              title={p.title}
+              subtitle={p.theme}
+              href={`/projects/${p.slug}`}
+              compact
+            />
           ))}
         </div>
       </Section>
@@ -81,7 +98,7 @@ export default function HomePage() {
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {people.slice(0, 3).map((m) => (
-            <div key={m.id} className="card p-4">
+            <div key={m.id} className="card p-4 bg-white rounded-2xl ring-1 ring-black/10">
               <div className="h-16 w-16 rounded-xl bg-gray-200/70 mb-3" />
               <div className="font-medium">{m.name}</div>
               <div className="text-sm text-gray-600">{m.role}</div>
@@ -101,13 +118,25 @@ export default function HomePage() {
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {news.slice(0, 3).map((n) => (
-            <article key={n.slug} className="card p-5">
+            <article
+              key={n.slug}
+              className="card p-5 bg-white rounded-2xl ring-1 ring-black/10"
+            >
               <span className="inline-flex rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700">
-                {new Date(n.date).toLocaleDateString(undefined, { month: "short", day: "2-digit", year: "numeric" })}
+                {new Date(n.date).toLocaleDateString(undefined, {
+                  month: "short",
+                  day: "2-digit",
+                  year: "numeric",
+                })}
               </span>
               <h3 className="mt-2 font-semibold leading-snug">{n.title}</h3>
-              <p className="mt-2 text-sm text-gray-700 line-clamp-3">{n.summary}</p>
-              <Link href={`/news-and-events/${n.slug}`} className="mt-3 inline-block text-sm underline">
+              <p className="mt-2 text-sm text-gray-700 line-clamp-3">
+                {n.summary}
+              </p>
+              <Link
+                href={`/news-and-events/${n.slug}`}
+                className="mt-3 inline-block text-sm underline"
+              >
                 Read more
               </Link>
             </article>
@@ -126,10 +155,18 @@ export default function HomePage() {
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {study.slice(0, 3).map((s) => (
-            <div key={s.slug} className="card p-5">
+            <div
+              key={s.slug}
+              className="card p-5 bg-white rounded-2xl ring-1 ring-black/10"
+            >
               <h3 className="font-semibold">{s.title}</h3>
-              <p className="mt-2 text-sm text-gray-700 line-clamp-3">{s.description}</p>
-              <Link href={`/study/${s.slug}`} className="mt-3 inline-flex items-center rounded-xl border px-3 py-1.5 text-sm">
+              <p className="mt-2 text-sm text-gray-700 line-clamp-3">
+                {s.description}
+              </p>
+              <Link
+                href={`/study/${s.slug}`}
+                className="mt-3 inline-flex items-center rounded-xl border px-3 py-1.5 text-sm"
+              >
                 Learn more
               </Link>
             </div>
@@ -148,16 +185,24 @@ export default function HomePage() {
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {resources.slice(0, 3).map((r) => (
-            <div key={r.slug} className="card p-5">
+            <div
+              key={r.slug}
+              className="card p-5 bg-white rounded-2xl ring-1 ring-black/10"
+            >
               <h3 className="font-semibold">{r.title}</h3>
-              <p className="mt-2 text-sm text-gray-700 line-clamp-3">{r.description}</p>
-              <Link href={`/resources/${r.slug}`} className="mt-3 inline-block text-sm underline">
+              <p className="mt-2 text-sm text-gray-700 line-clamp-3">
+                {r.description}
+              </p>
+              <Link
+                href={`/resources/${r.slug}`}
+                className="mt-3 inline-block text-sm underline"
+              >
                 Learn more
               </Link>
             </div>
           ))}
         </div>
       </Section>
-    </>
+    </main>
   );
 }
