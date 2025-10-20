@@ -82,7 +82,4 @@ Tech Stack
 - Data Layer: Static TypeScript modules (/src/data)
 - Hosting: Static deployable (e.g., Vercel or Netlify)
 
-Credits
------------
-Developed as part of the AUT BCIS Capstone Project.
-Designed and implemented by Markus Lee and team (2025).
+
